@@ -94,6 +94,28 @@ void bubleSort(int array[], int size)
 	}
 }
 
+void bubleSort2(int array[], int size)
+{
+    int i;
+    int auxiliar;
+    int s = 1;
+
+    while(s)
+    {
+        s = 0;
+        for (i = 1; i < size; i++)
+        {
+            if (array[i] < array[i - 1])
+            {
+                auxiliar = array[i];
+                array[i] = array[i - 1];
+                array[i - 1] = auxiliar;
+                s = 1;
+            }
+        }
+    }
+}
+
 
 int fillFromFile(int array[], int maxSize)
 {
