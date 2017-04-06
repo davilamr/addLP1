@@ -164,6 +164,23 @@ void quickSort(int array[], int size)
   quickSort(array + i, size - i);
 }
 
+void selectionSort(int array[], int size)
+{
+    int i;
+    int indiceMinimo;
+    int auxiliar;
+
+    for(i=0;i<size;i++)
+    {
+        indiceMinimo = calcularIndiceMinimo(array+i,size-i) + i;
+        auxiliar = array[i];
+        array[i] = array[indiceMinimo];
+        array[indiceMinimo] = auxiliar;
+    }
+
+}
+
+
 void printIntArray(int array[], int size)
 {
 	int i;

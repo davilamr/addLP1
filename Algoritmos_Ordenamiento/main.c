@@ -3,7 +3,7 @@
 #include <time.h>
 #include "func.h"
 
-#define MAX 200000
+#define MAX 100000
 
 int cmpfunc (const void * a, const void * b)
 {
@@ -26,7 +26,7 @@ int main(){
     fillFromFile(arrayAuxiliar, MAX);
 
 
-    printf("\n\nsortQty,NadiaSort,NadiaIISort,BubleSort,BubleSortII,InsertionSort,QuickSort,QuickSort()\n");
+    printf("\n\nsortQty,NadiaSort,NadiaIISort,SelectionSort,BubleSort,BubleSortII,InsertionSort,QuickSort,QuickSort()\n");
     for(cantidadTest = 10000; cantidadTest < MAX; cantidadTest = cantidadTest + 10000)
     {
 
@@ -46,6 +46,14 @@ int main(){
         gettimeofday(&stop, NULL);
         secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
         //printf("\nTiempo Insumido (Nadia II Sort) %.2f ms",secs*1000);
+        printf("%.0f,",secs*1000*1000);
+
+        memcpy(array,arrayAuxiliar, sizeof(int) * cantidadTest);
+        gettimeofday(&start, NULL);
+        selectionSort(array,cantidadTest);
+        gettimeofday(&stop, NULL);
+        secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
+        //printf("\nTiempo Insumido (Nadia Sort) %.2f ms",secs*1000);
         printf("%.0f,",secs*1000*1000);
 
         memcpy(array,arrayAuxiliar, sizeof(int) * cantidadTest);
@@ -87,8 +95,11 @@ int main(){
         secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
         //printf("\nTiempo Insumido (Quick Sort qsort()) %.2f ms\n",secs*1000);
         printf("%.0f\n",secs*1000*1000);
+
+
+
     }
-    //printIntArray(edadOrdenada,sizeEdad);
+    //printIntArray(array,500);
 
 
 

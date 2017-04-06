@@ -8,5 +8,7 @@ void insertionSort(int array[], int size);
 void bubleSort(int array[], int size);
 void bubleSort2(int array[], int size);
 void quickSort(int array[], int size);
+void selectionSort(int array[], int size);
 
 int fillFromFile(int array[], int maxSize);
+
