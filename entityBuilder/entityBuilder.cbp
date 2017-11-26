@@ -12,7 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
-				<Option parameters="Book char title[50] char author[50] char subject[100] int book_id" />
+				<Option parameters="Employee int id char name[51] char lastName[51] int age int type" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>

@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+/*
 
+./entityBuilder Employee int id char name[51] char lastName[51] int age int type
+
+
+*/
 typedef struct
 {
     char type[256];
@@ -33,7 +38,7 @@ int main(int argc, char **argv)
     Member members[256];
     int qtyMembers;
     int i,j;
-    char* result = malloc(sizeof(char)*500000);
+    char* result = malloc(sizeof(char)*50000);
 
     if((argc >= 4) && (argc%2 != 1))
     {
@@ -101,6 +106,7 @@ int isArray(char* definition,char* result)
 {
     int i;
     int retorno = 0;
+    *result = '\0';
     for(i=0; i < strlen(definition); i++)
     {
 
@@ -112,6 +118,7 @@ int isArray(char* definition,char* result)
         }
         *(result+i) = *(definition+i);
     }
+    *(result+i) = '\0';
     return retorno;
 }
 
@@ -119,10 +126,11 @@ int buildConstructorPrototype(char* entityName, Member* members,int qtyMembers, 
 {
     int i;
     char auxString[1024];
-    char auxDefinition[1024];
+    char auxDefinition[1024]="";
     *result = '\0';
 
     char auxPrefix[1024];
+
     if(strlen(entityName) > 1)
         sprintf(auxPrefix,"%c%s_",tolower(entityName[0]),entityName+1);
     else
