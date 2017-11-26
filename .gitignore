@@ -14,8 +14,8 @@
 ## Code::Blocks  
 #################  
 
-*.depend  
-*.layout 
+
+ 
 
 
 .DS_Store

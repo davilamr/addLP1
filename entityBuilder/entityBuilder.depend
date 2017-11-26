@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1511653567 source:/Users/Mauro/Documents/workspace_videos_c/entityBuilder/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511735942 source:/Users/Mauro/Documents/workspace_addLP1/addLP1/entityBuilder/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

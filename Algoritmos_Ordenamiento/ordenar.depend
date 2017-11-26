@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1491507449 source:/Users/Mauro/Documents/workspace_addLP1/addLP1/Algoritmos_Ordenamiento/func.c
+	<stdio.h>
+	<stdlib.h>
+
+1491507533 source:/Users/Mauro/Documents/workspace_addLP1/addLP1/Algoritmos_Ordenamiento/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"func.h"
+
+1491506677 /Users/Mauro/Documents/workspace_addLP1/addLP1/Algoritmos_Ordenamiento/func.h
+
