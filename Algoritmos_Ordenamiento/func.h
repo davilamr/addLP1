@@ -11,4 +11,3 @@ void quickSort(int array[], int size);
 void selectionSort(int array[], int size);
 
 int fillFromFile(int array[], int maxSize);
-
