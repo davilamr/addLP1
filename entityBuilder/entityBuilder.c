@@ -173,6 +173,7 @@ int entity_buildSetters(char* entityName, Member* members,int qtyMembers, char* 
 
     return 0;
 }
+
 int entity_buildSettersPrototypes(char* entityName, Member* members,int qtyMembers, char* result)
 {
     int i;
@@ -274,6 +275,95 @@ int entity_buildGettersPrototypes(char* entityName, Member* members,int qtyMembe
 
     return 0;
 }
+
+
+
+int entity_buildFinders(char* entityName, Member* members,int qtyMembers, char* result)
+{
+    int i;
+    char auxString[1024];
+    char auxDefinition[1024];
+    char auxDefinitionUp[1024];
+    int flagArray;
+    *result = '\0';
+    char auxPrefix[1024];
+    if(strlen(entityName) > 1)
+        sprintf(auxPrefix,"%c%s_",tolower(entityName[0]),entityName+1);
+    else
+        sprintf(auxPrefix,"%c_",tolower(entityName[0]));
+
+    for(i=0;i<qtyMembers;i++)
+    {
+        flagArray = isArray(members[i].definition,auxDefinition);
+        if(strlen(auxDefinition) > 1)
+            sprintf(auxDefinitionUp,"%c%s",toupper(auxDefinition[0]),auxDefinition+1);
+        else
+            sprintf(auxDefinitionUp,"%c",toupper(auxDefinition[0]));
+
+//"
+        if(flagArray)
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s* %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(strcmp(%s,aux->%s)==0)\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
+                        entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition,
+                        entityName,entityName,
+                        auxDefinition,auxDefinition);
+        else
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(%s == aux->%s)\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
+                        entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition,
+                        entityName,entityName,
+                        auxDefinition,auxDefinition);
+
+        strcat(result,auxString);
+    }
+
+
+    return 0;
+}
+
+int entity_buildFindersPrototypes(char* entityName, Member* members,int qtyMembers, char* result)
+{
+    int i;
+    char auxString[1024];
+    char auxDefinition[1024];
+    char auxDefinitionUp[1024];
+    int flagArray;
+    *result = '\0';
+    char auxPrefix[1024];
+    if(strlen(entityName) > 1)
+        sprintf(auxPrefix,"%c%s_",tolower(entityName[0]),entityName+1);
+    else
+        sprintf(auxPrefix,"%c_",tolower(entityName[0]));
+
+    for(i=0;i<qtyMembers;i++)
+    {
+        flagArray = isArray(members[i].definition,auxDefinition);
+        if(strlen(auxDefinition) > 1)
+            sprintf(auxDefinitionUp,"%c%s",toupper(auxDefinition[0]),auxDefinition+1);
+        else
+            sprintf(auxDefinitionUp,"%c",toupper(auxDefinition[0]));
+
+//"
+        if(flagArray)
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s* %s);\n",
+                        entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition);
+        else
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s %s);\n",
+                        entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition);
+
+        strcat(result,auxString);
+    }
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
 
 static int isArray(char* definition,char* result)
 {

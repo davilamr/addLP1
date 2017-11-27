@@ -34,6 +34,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="entityBuilder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="entityBuilder.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

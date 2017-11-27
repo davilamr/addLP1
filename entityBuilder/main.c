@@ -4,7 +4,16 @@
 #include "entityBuilder.h"
 /*
 
-./entityBuilder Employee "unsigned int" id char name[51] char lastName[51] int age int type
+typedef struct
+{
+    int id;
+    char nombre[51];
+    char apellido[51];
+    char dni[51];
+    int estado;
+}Socio;
+
+./entityBuilder Socio int id char nombre[51] char apellido[51] char dni[51] int estado
 
 
 */
@@ -38,7 +47,7 @@ int main(int argc, char **argv)
 
     strToUpper(entityName,entityNameUp);
     printf("\n\n********************* %s.h ************************\n\n",entityName);
-    printf("#ifndef _%s_H\n#define _%s_H\n",entityNameUp,entityNameUp);  // _EMPLOYEE_H
+    printf("#include \"ArrayList.h\"\n\n#ifndef _%s_H\n#define _%s_H\n",entityNameUp,entityNameUp);  // _EMPLOYEE_H
     entity_buildStruct(entityName, members, qtyMembers, result);
     printf("%s",result);
     printf("#endif// _%s_H\n\n",entityNameUp);
@@ -50,10 +59,12 @@ int main(int argc, char **argv)
     printf("%s",result);
     entity_buildGettersPrototypes(entityName, members, qtyMembers, result);
     printf("%s",result);
+    entity_buildFindersPrototypes(entityName, members, qtyMembers, result);
+    printf("%s",result);
     printf("\n\n********************* %s.h ************************\n\n",entityName);
 
     printf("\n\n********************* %s.c ************************\n\n",entityName);
-    printf("#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <%s.h>\n\n",entityName);  // _EMPLOYEE_H
+    printf("#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include \"ArrayList.h\"\n#include \"%s.h\"\n\n",entityName);  // _EMPLOYEE_H
     entity_buildConstructor(entityName, members, qtyMembers, result);
     printf("%s",result);
     entity_buildDestructor(entityName,result);
@@ -62,7 +73,8 @@ int main(int argc, char **argv)
     printf("%s",result);
     entity_buildGetters(entityName, members, qtyMembers, result);
     printf("%s",result);
-
+    entity_buildFinders(entityName, members, qtyMembers, result);
+    printf("%s",result);
     printf("\n\n********************* %s.c ************************\n\n",entityName);
 
     }
