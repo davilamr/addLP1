@@ -9,3 +9,18 @@
 	<stdlib.h>
 	<string.h>
 
+1511805479 source:/home/mauro/Descargas/addLP1/entityBuilder/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"entityBuilder.h"
+
+1511805479 /home/mauro/Descargas/addLP1/entityBuilder/entityBuilder.h
+
+1511804159 source:/home/mauro/Descargas/addLP1/entityBuilder/entityBuilder.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"entityBuilder.h"
+
