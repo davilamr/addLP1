@@ -302,15 +302,15 @@ int entity_buildFinders(char* entityName, Member* members,int qtyMembers, char* 
 
 //"
         if(flagArray)
-            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s* %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(strcmp(%s,aux->%s)==0)\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s* %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(strcmp(%s,%sget%s(aux))==0)\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
                         entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition,
                         entityName,entityName,
-                        auxDefinition,auxDefinition);
+                        auxDefinition,auxPrefix,auxDefinitionUp);
         else
-            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(%s == aux->%s)\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
+            sprintf(auxString,"%s* %sfindBy%s(ArrayList* pArray,%s %s)\n{\n\n\tint i;\n\t%s* aux;\n\t%s* retorno=NULL;\n\tfor(i=0;i<al_len(pArray);i++)\n\t{\n\t\taux = al_get(pArray,i);\n\t\tif(%s == %sget%s(aux))\n\t\t{\n\t\t\tretorno = aux;\n\t\t\tbreak;\n\t\t}\n\t}\n\treturn retorno;\n}\n\n",
                         entityName,auxPrefix,auxDefinitionUp,members[i].type,auxDefinition,
                         entityName,entityName,
-                        auxDefinition,auxDefinition);
+                        auxDefinition,auxPrefix,auxDefinitionUp);
 
         strcat(result,auxString);
     }
