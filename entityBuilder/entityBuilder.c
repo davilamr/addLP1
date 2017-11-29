@@ -358,9 +358,86 @@ int entity_buildFindersPrototypes(char* entityName, Member* members,int qtyMembe
 
 
 
+int entity_buildComparativeFunctions(char* entityName, Member* members,int qtyMembers, char* result)
+{
+    int i;
+    char auxString[1024];
+    char auxDefinition[1024];
+    char auxDefinitionUp[1024];
+    int flagArray;
+    *result = '\0';
+    char auxPrefix[1024];
+    if(strlen(entityName) > 1)
+        sprintf(auxPrefix,"%c%s_",tolower(entityName[0]),entityName+1);
+    else
+        sprintf(auxPrefix,"%c_",tolower(entityName[0]));
+
+    for(i=0;i<qtyMembers;i++)
+    {
+        flagArray = isArray(members[i].definition,auxDefinition);
+        if(strlen(auxDefinition) > 1)
+            sprintf(auxDefinitionUp,"%c%s",toupper(auxDefinition[0]),auxDefinition+1);
+        else
+            sprintf(auxDefinitionUp,"%c",toupper(auxDefinition[0]));
+
+//"
+        if(flagArray)
+            sprintf(auxString,"int %scompareBy%s(%s* pA ,%s* pB)\n{\n\n\tint retorno;\n\n\tretorno = strcmp(%sget%s(pA),%sget%s(pB));\n\n\treturn retorno;\n}\n\n",
+
+                        auxPrefix,auxDefinitionUp,"void","void",
+                        auxPrefix,auxDefinitionUp,auxPrefix,auxDefinitionUp);
+        else
+            sprintf(auxString,"int %scompareBy%s(%s* pA ,%s* pB)\n{\n\n\tint retorno = 0;\n\n\tif(%sget%s(pA) > %sget%s(pB))\n\t\tretorno = 1;\n\telse if(%sget%s(pA) < %sget%s(pB))\n\t\tretorno = -1;\n\n\treturn retorno;\n}\n\n",
+
+                        auxPrefix,auxDefinitionUp,"void","void",
+                        auxPrefix,auxDefinitionUp,auxPrefix,auxDefinitionUp,
+                        auxPrefix,auxDefinitionUp,auxPrefix,auxDefinitionUp);
+
+        strcat(result,auxString);
+    }
 
 
+    return 0;
+}
 
+int entity_buildComparativeFunctionsPrototypes(char* entityName, Member* members,int qtyMembers, char* result)
+{
+    int i;
+    char auxString[1024];
+    char auxDefinition[1024];
+    char auxDefinitionUp[1024];
+    int flagArray;
+    *result = '\0';
+    char auxPrefix[1024];
+    if(strlen(entityName) > 1)
+        sprintf(auxPrefix,"%c%s_",tolower(entityName[0]),entityName+1);
+    else
+        sprintf(auxPrefix,"%c_",tolower(entityName[0]));
+
+    for(i=0;i<qtyMembers;i++)
+    {
+        flagArray = isArray(members[i].definition,auxDefinition);
+        if(strlen(auxDefinition) > 1)
+            sprintf(auxDefinitionUp,"%c%s",toupper(auxDefinition[0]),auxDefinition+1);
+        else
+            sprintf(auxDefinitionUp,"%c",toupper(auxDefinition[0]));
+
+//"
+        if(flagArray)
+            sprintf(auxString,"int %scompareBy%s(%s* pA ,%s* pB);\n",
+
+                        auxPrefix,auxDefinitionUp,"void","void");
+        else
+            sprintf(auxString,"int %scompareBy%s(%s* pA ,%s* pB);\n",
+
+                        auxPrefix,auxDefinitionUp,"void","void");
+
+        strcat(result,auxString);
+    }
+
+
+    return 0;
+}
 
 
 
