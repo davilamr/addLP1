@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="ArrayList.h" open="0" top="0" tabpos="2">
+		<Cursor position="840" topLine="48" />
+	</File>
+	<File name="Controlador.c" open="1" top="0" tabpos="2">
+		<Cursor position="443" topLine="0" />
+	</File>
+	<File name="Controlador.h" open="1" top="0" tabpos="7">
+		<Cursor position="32" topLine="0" />
+	</File>
+	<File name="DataManager.c" open="1" top="1" tabpos="4">
+		<Cursor position="2515" topLine="0" />
+	</File>
+	<File name="DataManager.h" open="1" top="0" tabpos="8">
+		<Cursor position="111" topLine="0" />
+	</File>
+	<File name="Validaciones.c" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="Vista.c" open="1" top="0" tabpos="3">
+		<Cursor position="1453" topLine="65" />
+	</File>
+	<File name="Vista.h" open="1" top="0" tabpos="5">
+		<Cursor position="231" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1">
+		<Cursor position="109" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

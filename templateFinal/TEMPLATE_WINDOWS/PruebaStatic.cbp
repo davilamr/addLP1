@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TEMPLATE" />
+		<Option execution_dir="/home/mauro/Descargas/Linux_64/Makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/PruebaStatic" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="`pkg-config --cflags gtk+-3.0`" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config --libs gtk+-3.0`" />
+					<Add library="./ArrayList.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PruebaStatic" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="`pkg-config --cflags gtk+-3.0`" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`pkg-config --libs gtk+-3.0`" />
+					<Add library="./ArrayList.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="ArrayList.h" />
+		<Unit filename="Controlador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Controlador.h" />
+		<Unit filename="DataManager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DataManager.h" />
+		<Unit filename="Validaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Validaciones.h" />
+		<Unit filename="Vista.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Vista.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
